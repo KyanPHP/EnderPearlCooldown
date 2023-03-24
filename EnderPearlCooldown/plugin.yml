@@ -1,0 +1,6 @@
+name: EnderPearlCooldown
+version: 1.0.0
+api: [4.0.0, 4.99.99]
+main: enderpearlcooldown\EnderpearlCooldown
+author: Kyan
+description: Cooldown for ender pearls.
