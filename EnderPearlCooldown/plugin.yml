@@ -1,0 +1,27 @@
+name: EnderPearlCooldown
+version: 1.0.0
+main: EnderPearlcooldown/Main
+description: A plugin that adds cooldowns for ender pearls.
+authors:
+  - Kyan Gore
+
+api: 4.0.0
+commands:
+  mycommand:
+    description: My custom command.
+    usage: /mycommand [player]
+    permission: myplugin.mycommand
+    aliases: [mc]
+
+permissions:
+  myplugin.mycommand:
+    description: Allows access to the mycommand command.
+
+events:
+  PlayerInteractEvent: EventListener
+
+cooldowns:
+  enderpearl:
+    duration: 10
+    message: "&cYou must wait {duration} seconds before using an ender pearl again."
+
