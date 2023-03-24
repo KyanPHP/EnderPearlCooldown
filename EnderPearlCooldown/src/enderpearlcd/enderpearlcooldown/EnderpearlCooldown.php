@@ -23,20 +23,19 @@ class EnderpearlCooldown extends PluginBase implements Listener{
         $this->config->save();
     }
 
-    public function onPlayerInteract(PlayerInteractEvent $event){
+    public function onPlayerInteract(PlayerInteractEvent $event, $timeLeft§r§c){
         $player = $event->getPlayer();
         if($event->getItem()->getId() === 368 && !$player->hasPermission("enderpearlcooldown.bypass")){
             $cooldown = $this->config->get("cooldown", 36);
             $playerName = strtolower($player->getName());
-            if(!$player->hasPermission("enderpearlcooldown.override")){
-                if($this->config->exists($playerName)){
-                    $lastUsed = $this->config->get($playerName);
-                    if(time() - $lastUsed < $cooldown){
-                        $timeLeft = $cooldown - (time() - $lastUsed);
-                        $player->sendMessage("§cYou must wait §l§n$timeLeft§r§c seconds before using enderpearls again.");
-                        $event->setCancelled();
-                        return;
-                    }
+            if(!$player->hasPermission("enderpearlcooldown.override")) if($this->config->exists($playerName)){
+                $lastUsed = $this->config->get($playerName);
+                if(time() - $lastUsed < $cooldown){
+                    $timeLeft = $cooldown - (time() - $lastUsed);
+                    $timeLeft§r§c;
+                    $player->sendMessage("§cYou must wait §l§n$timeLeft§r§c seconds before using enderpearls again.");
+                    $event->setCancelled();
+                    return;
                 }
             }
             $this->config->set($playerName, time());
